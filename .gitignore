@@ -1,0 +1,45 @@
+# Virtual Environment
+vae_env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ML/Data files
+data/
+*.pth
+*.pt
+*.pkl
+*.h5
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Output files
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Security sensitive
+.env
+.env.*
+!.env.security
+
+# Cache
+pip-cache/
+.pytest_cache/
