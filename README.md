@@ -4,7 +4,7 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Qmo37/VAE_MNIST/blob/master/VAE_MNIST.ipynb)
 
-*因使用 Local IDE 開發，因此在 Colab 上執行前需執行從 .py 檔同步到 .ipynb 檔方能執行。
+*因使用 Local IDE 開發，因此在 Colab 上執行前需執行從 .py 檔同步到 .ipynb 檔方能執行（第一個 Cell）。
 
 ## 📋 作業要求
 
