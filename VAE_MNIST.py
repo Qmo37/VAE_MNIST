@@ -10,14 +10,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 import os
-import warnings
-
-# Fix Chinese font display
-plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'SimHei', 'Microsoft YaHei', 'Arial Unicode MS']
-plt.rcParams['axes.unicode_minus'] = False
-warnings.filterwarnings('ignore', category=UserWarning, message='.*Glyph.*missing from font.*')
 
 # Fix OpenMP warning
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
@@ -196,7 +189,7 @@ with torch.no_grad():
 # ===========================
 # Summary
 # ===========================
-print(f"\n📊 Training Summary:")
+print(f"\nTraining Summary:")
 print(f"• Dataset: MNIST (28x28 images)")
 print(f"• Model: Simple VAE (784→400→20→400→784)")
 print(f"• Optimizer: Adam (lr=0.001)")
@@ -205,7 +198,7 @@ print(f"• Final loss: {losses[-1]:.4f}")
 print(f"• Loss improvement: {losses[0] - losses[-1]:.4f}")
 print(f"• Output: reconstruction.png")
 
-print(f"\n✅ Assignment requirements fulfilled:")
+print(f"\nAssignment requirements fulfilled:")
 print(f"  ✓ Used MNIST dataset")
 print(f"  ✓ Implemented Encoder (784D → mu, logvar)")
 print(f"  ✓ Used reparameterization trick")
@@ -214,4 +207,4 @@ print(f"  ✓ Used Adam optimizer")
 print(f"  ✓ Displayed epoch losses")
 print(f"  ✓ Generated reconstruction visualization")
 
-print(f"\n🎓 Simple VAE implementation completed!")
+print(f"\nSimple VAE implementation completed!")
