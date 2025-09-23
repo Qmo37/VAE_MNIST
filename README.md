@@ -4,6 +4,8 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Qmo37/VAE_MNIST/blob/master/VAE_MNIST.ipynb)
 
+*因使用 Local IDE 開發，因此在 Colab 上執行前需執行從 .py 檔同步到 .ipynb 檔方能執行。
+
 ## 📋 作業要求
 
 ### ✅ 已完成項目
@@ -99,27 +101,3 @@ VAE_MNIST/
 ├── reconstruction.png   # 重建結果圖像
 └── data/               # MNIST 資料集
 ```
-
-## 🎯 學習目標
-
-通過此實作，學生將理解：
-1. 變分自編碼器的基本原理
-2. 如何實現重參數化技巧
-3. VAE 損失函數的組成
-4. PyTorch 的基本使用方法
-
-## 📊 典型結果
-
-- **訓練時間**：CPU 約 2-3 分鐘，GPU 約 30 秒
-- **最終損失**：約 90-110（依執行而異）
-- **模型大小**：約 67 萬個參數
-- **重建品質**：清晰的數字輪廓，輕微模糊
-
-## Colab 體驗
-
-點擊上方的 Colab 徽章，可在 Google Colab 中直接執行此專案，無需本地安裝。
-
----
-
-**作業完成** ✅
-*簡潔、清晰、符合教學要求*
