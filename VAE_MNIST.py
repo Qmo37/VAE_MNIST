@@ -1,8 +1,3 @@
-"""
-VAE MNIST - Assignment Implementation
-Simple and clean implementation following exact assignment requirements
-"""
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
