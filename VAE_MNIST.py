@@ -10,7 +10,14 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import os
+import warnings
+
+# Fix Chinese font display
+plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'SimHei', 'Microsoft YaHei', 'Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False
+warnings.filterwarnings('ignore', category=UserWarning, message='.*Glyph.*missing from font.*')
 
 # Fix OpenMP warning
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
