@@ -2,7 +2,7 @@
 
 使用變分自編碼器（Variational Autoencoder, VAE）重建 MNIST 手寫數字資料集。
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/VAE_MNIST/blob/main/VAE_MNIST.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Qmo37/VAE_MNIST/blob/master/VAE_MNIST.ipynb)
 
 ## 📋 作業要求
 
@@ -121,5 +121,5 @@ VAE_MNIST/
 
 ---
 
-**作業完成** ✅  
+**作業完成** ✅
 *簡潔、清晰、符合教學要求*
