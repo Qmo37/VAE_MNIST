@@ -32,25 +32,25 @@ class VAE(nn.Module):
 
     def encode(self, x):
         """Encoder: converts input to latent space parameters"""
-        h1 = F.relu(self.fc1(x))
-        mu = self.fc_mu(h1)
-        logvar = self.fc_logvar(h1)
+        h1 = F.relu(self.fc1(x)) # Removes negative values
+        mu = self.fc_mu(h1) # mu: Mean of the latent distribution
+        logvar = self.fc_logvar(h1) # logvar: Log of variance
         return mu, logvar
 
     def reparameterize(self, mu, logvar):
         """Reparameterization trick: z = mu + std * epsilon"""
-        std = torch.exp(0.5 * logvar)
-        eps = torch.randn_like(std)
+        std = torch.exp(0.5 * logvar) # std = sqrt(variance) = sqrt(exp(logvar)) = exp(0.5 * logvar)
+        eps = torch.randn_like(std) # Sample random noise: epsilon ~ N(0, 1)
         return mu + eps * std
 
     def decode(self, z):
         """Decoder: converts latent variable back to image"""
         h3 = F.relu(self.fc3(z))
-        return torch.sigmoid(self.fc4(h3))
+        return torch.sigmoid(self.fc4(h3)) # Sigmoid squashes values to [0,1] range, perfect for image pixels
 
     def forward(self, x):
-        mu, logvar = self.encode(x.view(-1, 784))
-        z = self.reparameterize(mu, logvar)
+        mu, logvar = self.encode(x.view(-1, 784)) # Flatten images: (batch_size, 1, 28, 28) → (batch_size, 784)
+        z = self.reparameterize(mu, logvar) # Sample: get latent codes using reparameterization
         return self.decode(z), mu, logvar
 
 # ===========================
@@ -80,14 +80,14 @@ transform = transforms.Compose([transforms.ToTensor()])
 train_dataset = datasets.MNIST('./data', train=True, download=True, transform=transform)
 test_dataset = datasets.MNIST('./data', train=False, transform=transform)
 
-# Data loaders
+# DataLoader batches the data and shuffles it for training
 train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False)
 
 # ===========================
 # Model Initialization
 # ===========================
-model = VAE().to(device)
+model = VAE().to(device) # GPU or CPU
 print(f'Model parameters: {sum(p.numel() for p in model.parameters()):,}')
 
 # Adam optimizer (as required)
@@ -100,9 +100,9 @@ def train(epoch):
     model.train()
     train_loss = 0
 
-    for batch_idx, (data, _) in enumerate(train_loader):
+    for batch_idx, (data, _) in enumerate(train_loader): # Note: we ignore labels (_) since VAE is unsupervised
         data = data.to(device)
-        optimizer.zero_grad()
+        optimizer.zero_grad() # PyTorch accumulates gradients, so we must clear them each time
 
         # Forward pass
         recon_batch, mu, logvar = model(data)
@@ -110,7 +110,7 @@ def train(epoch):
         # Calculate loss
         loss = vae_loss(recon_batch, data, mu, logvar)
 
-        # Backward pass
+        # Backward pass (Calculate gradients using backpropagation)
         loss.backward()
         optimizer.step()
 
@@ -147,8 +147,8 @@ print("Training completed!")
 # ===========================
 print("\nGenerating reconstruction results...")
 
-model.eval()
-with torch.no_grad():
+model.eval() # Set model to evaluation mode (disables dropout, etc.)
+with torch.no_grad(): # Disable gradient computation for faster inference
     # Get test data
     data, _ = next(iter(test_loader))
     data = data.to(device)
